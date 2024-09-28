@@ -1,0 +1,75 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\input{../common}
+\begin{document}
+\customheading{\today}{Proofs: Function types}{Fall 2024}{CS30 - Discrete Maths}
+
+\section*{Title}
+\begin{enumerate}
+    \item \textbf{bijection}:[1:1 correspondence/invertible] $\rightarrow$ \textit{Function} such that each element in the second set(codomain - set of all possible output values) is mapped to \textit{exactly} one element of the element. \textit{Note: a function is bijective if it is both injective and surjective. Therefore, to prove a function is a bijection you need to prove that it is a Surjection and an injection}
+    \customfigure{../images/bijective.png}{bijective function: 1:1 mapping}{bijection} Example:
+    \begin{equation}
+        f(x) = 5x+8
+    \end{equation}
+    \begin{equation}
+        \forall y \in Y, \exists !x \in X: y = f(x)
+    \end{equation}
+    $\exists !x$z - means there exists exactly one
+
+    \item \textbf{Injection}: \textit{function} that maps each element of the codomain to by \textit{at most} one element of the domain
+    \customfigure{../images/injective.png}{injective function}{injection}
+    \begin{equation}
+        \forall x, x' \in X: f(x) = f(x') \Rightarrow x = x'
+    \end{equation}
+    This means for any elements $x$ and $x'$, have the same output under a function it means $x=x'$. \textit{Equal inputs mean equal outputs}
+    \textbf{Proof technique}: Start by assuming that $f(x)=f(x')$, then prove that $x=x'$.
+    \begin{equation}
+        \begin{aligned}
+            f(x) = 5x + 8 \\
+            \textnormal{pick any two unequal real number} \hs x_{1} \not = x_{2} \hs s.t. \\
+            5x_{1} + 8 \not = 5x_{2} + 8
+        \end{aligned}
+    \end{equation}
+    \textbf{another proof technique}: Proving that two elements in the domain maps to the same element in the codomain that's $5x_{1}^2 + 8 = 5x_{2}^2+8; x_{1} \not = x_{2}$ \\
+    \begin{equation}
+        \begin{aligned}
+            f(x) = 5x^2 + 8 \geq 5x^2 \geq 0 \\
+            f(-1) = f(1); \textnormal{not injective}
+        \end{aligned}
+    \end{equation}
+
+    \textbf{Composition of two injective} is injective. i.e if $f: A \rightarrow B$ and $g:B \rightarrow A$ are both injective then $(g \cdot f)(x)$ is injective. \\ To show this, we need to show that for $a_{1} \not = a_{2} \in A, \hs s.t. \hs (g \cdot f)(a_{1}) \not = (g \cdot f)(a_{2})$. \\ Consider any $a_{1}, a_{2}\in A$ such that $a_{1} \not = a_{2}$
+    Let $b_{1} = f(a_{1}) \hs and \hs b_{2} = f(a_{2})$. Since $a_{1} \not = a_{2} \hs and \hs f$ is injective, $b_{1} \not = b_{2}$. Since $g$ is injective, $b_{1} \not = b_{2}$ implies $g(b_{1}) \not = g(b_{2})$ that's  $(g \cdot f)(a_{1}) \not = (g \cdot f)(a_{2})$
+
+    \item \textbf{Surjection}: \textit{function} that maps each element in the codomain to at least one element in the domain.
+    \customfigure{../images/surjective.png}{surjective function}{surjective}
+    \begin{equation}
+        \forall y \in Y, \exists x \in X: y = f(x)
+    \end{equation}
+    In plain english: $f: X \rightarrow Y$ is surjective if for every element in the codomain, there exists in the domain, s.t. $f(x) = y$ \\
+    \textbf{Proof}: take any $y \in \R$, show that we can take an x value s.t. $f(x) =y$
+    \begin{equation}
+        \begin{aligned}
+            f(x) = 5x+8 \\
+            y = 5x + 8 \\
+            x = \frac{y-8}{5} \\
+            f(x) = 5 \cdot{\frac{y-8}{5} + 8} \\
+            f(x) = y - 8 + 8 \\
+            f(x) = y
+        \end{aligned}
+    \end{equation}
+
+    \textbf{Another proof style}: Proving that not all the elements in the codomain are mapped to the doamin
+
+    \begin{equation}
+        f(x) = 5x^2 + 8 \geq 5x^2 \geq 0
+    \end{equation}
+    \textbf{Composition} Prove that if $f:A \rightarrow B$ and $g:B \rightarrow C$ are surjective, then $(g \cdot f)(x)$ is surjective
+
+    \textit{Goal: Prove for any $c \in C$ there exists $a \in A$ such that
+    $(g \cdot f)(a) = c$} \\ \\
+
+    Fix $c \in C$. Since $g: B \rightarrow C$ is surjective, given $c \in C$, there exists $b \in B$ such that $g(b) = c$. Since, $f: A \rightarrow B$, given this $b \in B$, there exists $a \in A$ such that $f(a) = b$. That is, $g(f(a)) = g(b) = c$. Thus, $(g \cdot f)(a) = c$. This shows $(g \cdot f)(x)$ is surjective.
+    \item \textbf{general function}
+\end{enumerate}
+\end{document}

@@ -1,13 +1,16 @@
 %% import packages to avoid too many imports on main file
+\usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{enumerate}
+\usepackage{float}
+\usepackage{graphicx}
 \usepackage{ifthen}
 \usepackage{mdframed}
 \usepackage{tcolorbox}
 \usepackage{xcolor}
 \usepackage[sfdefault]{plex-sans}
 \usepackage{tikz}
-\usepackage{graphicx} % Required for inserting images
+
 
 \newcommand{\R}{\ensuremath{\mathbb{R}}}
 \newcommand{\N}{\ensuremath{\mathbb{N}\hspace{1.0mm}}}
@@ -32,15 +35,15 @@
     #1 % This allows passing additional customization options
 }
 
-\newcommand{\customequation}[1]{
-    \vspace{5.0mm}
-    \begin{center}
-        \begin{align*}
-            #1
-        \end{align*}
-    \end{center}
-    % \vspace{5.0mm}
-}
+% \newcommand{\customequation}[1]{
+%     \vspace{5.0mm}
+%     \begin{center}
+%         \begin{align*}
+%             #1
+%         \end{align*}
+%     \end{center}
+%     % \vspace{5.0mm}
+% }
 
 %% credit statement
 \newcommand{\creditstatement}[1][alone]{
@@ -69,4 +72,13 @@
         \vspace{3cm}
         \end{minipage}%
     }
+}
+
+\newcommand{\customfigure}[3]{
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=25mm]{#1}
+        \caption{#2}
+        \label{fig:#3}
+    \end{figure}
 }
