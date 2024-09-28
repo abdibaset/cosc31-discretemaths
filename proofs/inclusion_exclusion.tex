@@ -1,0 +1,30 @@
+\documentclass[11]{article}
+
+\input{../common.tex}
+\begin{document}
+\customheading{\today}{Proof: Set theory}{Fall 2024}{CS30 - Discrete Maths}
+
+\section*{Inclusion-Exclusion principle} \href{https://en.wikipedia.org/wiki/Inclusion%E2%80%93exclusion_principle}{Wikipedia} \\
+
+Inclusion-Exclusion - counting technique which generalizes the familiar method of obtaining the number of elements in the \textit{union} of two or \textit{finite sets}. Simplest example:
+
+\begin{equation}
+    A \cup B = |A| + |B| - |A \cap B|
+\end{equation}
+
+In the case of 3 three sets:
+
+\begin{equation}
+    | A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |B \cap C| - |A \cap C| + |A \cap B \cap C|
+\end{equation}
+
+Step-wise proof:
+\begin{gather}
+    | (A \cup B) \cup C| = |A \cup B| + |C| - |(A \cup B) \cap C| \\
+    | A \cup B| = |A| + |B| - |A \cap B| \\
+    -| (A \cup B) \cap C| = -|A \cap C| \cup |B \cap C| \\
+    -|(A \cap C) \cup (B \cap C)| = -|A \cap C| - |B \cap C| +
+    | A \cap C| \cap |B \cap C| \\
+    \textnormal{Grouping LHS:} = |C| + |A| + |B| - |A \cap B| - |A \cap C|- |B \cap C| + |A \cap B \cap C|
+\end{gather}
+\end{document}
