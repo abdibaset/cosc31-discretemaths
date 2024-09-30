@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+
+\input{../common.tex}
+\begin{document}
+\customheading{\today}{Sets: Language in set systems}{Fall 2024}{CS30 - Discrete Maths}
+
+\section*{Symbols}
+\begin{enumerate}
+    \item Subsets
+        \begin{enumerate}[label=\alph*]
+            \item $\subset$: Example: $A \subset B$ means A is subset of B, but may or may not be equal to B.
+            \item $\subseteq$: Example $A \subseteq B$ means A is a subset of B, and can be equal to B. All the elements of A are in B. \textit{possibility of being equal}.
+            \item $\subsetneq$: Means strict subset; that's all elements of A are in B.
+        \end{enumerate}
+    \item Union($\cup$): distint elements in subsets in one set.
+    \item Intersection($\cap$): common elements in different sets.
+    \item Difference ($\setminus$): removing an element from a set.
+\end{enumerate}
+\section*{Definition of functions}
+\begin{gather}
+    F : \{1, 2, 3, \ldots, n\} \times \Z \rightarrow \{0, 1\}
+\end{gather}
+
+This means $F$ takes inputs from a \textit{finite set} of integers $\{1, 2, 3 \ldots, n\}$ and set of all integers, $\Z$, to give an output $\{0, 1\}$
+
+Purpose:
+\begin{gather}
+    F(i, j) =
+    \begin{cases}
+        1 & \text{if } \exists S \subseteq \{1, 2, 3, \ldots, j\} \hs \text{such that} \sum_{i \in S} a_i = k \\
+        0 & \text{otherwise}
+    \end{cases}
+\end{gather}
+
+\textbf{In english}: $F(j, k) = 1$ if \textit{there exists} a subset $S$ of the finite set of integers $\{1, 2, 3, \ldots j\}$ such that the sum of all its elements equals $k$; otherwise $F(j, k) = 0$. \\
+
+The subset $S$ is composed of indices from a finite set, and each index $i \in S$ corresponds to a value $a_i$
+
+\begin{enumerate}
+    \item if $n=5$ and $(a_{1}, a_{2},  a_{3}, a_{4}, a_{5}) = (1, 2, 4, 5, 8)$, then write down the following values with one line justification. This part is to make sure you understand the definitions
+    \begin{itemize}
+        \item What is $F(j, 0)$ for $1 \leq j \leq 5$?
+        \begin{gather}
+            F(1, 0) = 1 \\ F(2, 0) = 1 \\ F(3, 0) = 1 \\ F(4, 0) = 1 \\ F(5, 0) = 1 \\
+            \text{This means that} \hs  S = \emptyset
+        \end{gather}
+
+
+        \item What is $F(0,0)$?
+            \begin{gather}
+                F(0,0) = 0 \\ \text{Means} \hs S = \emptyset
+            \end{gather}
+        \item What is $F(3, 3)$? What $F(3, 8)$?
+        \begin{gather}
+            F(3, 3) = 0 \hs \text{because there exists a  subset} (1, 2) \hs \text{such that} \hs \sum (1, 2) = 3 \\
+            F(3, 8) = 0 \hs \text{The largest subset is} (1, 2, 4) whose \sum (1, 2, 3) = 7
+        \end{gather}
+        Since $8 > 7$, there can't be any subset of the first 3 elements that adds up to 8.
+    \end{itemize}
+\end{enumerate}
+\end{document}
