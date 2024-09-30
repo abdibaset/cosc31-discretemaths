@@ -1,0 +1,26 @@
+\documentclass[11pt]{article}
+
+\input{../common.tex}
+\begin{document}
+\customheading{\today}{Proof by contradtion: Rationality of Numbers}{Fall 2024}{CS30 - Discrete Maths}
+
+\section*{}
+\begin{enumerate}
+    \item  Prove that $log_{2}3$ is irrational.
+    \begin{proof}
+        Suppose $log_{2}3$ were rational, i.e. $log_{2}3 = \frac{p}{3}$ where $p$ and $q$ are some positive integers. Then $3 = 2^{\frac{p}{q}} \equiv 3^{q} = 2^{p}$. An odd number cannot be equal to an even number hence $log_{2}3$ is irrational. \\
+
+        Since $log_{2}3$ is an irrational number, $2log_{2}3$ is irrational.
+        But it is not always the case. For example, let $x = \sqrt{2}$ and $y=log_{2}3$ then
+        \begin{equation}
+            x^{y} = (\sqrt{2})^{2log_{2}3} = \sqrt{2^{2}}^{log_{2}3} = 2^{log_{2}3} = 3
+        \end{equation}
+    \end{proof}
+
+    \item Prove that $\sqrt{6}$ is irrational.
+    \begin{proof}
+        Suppose $\sqrt{6}$ were rational, i.e. $\sqrt{6} = \frac{p}{q}$ where $p$ and $q$ are some positive integers, and at least one of them is odd.If you square all sides, you will have, $ 6 = (\frac{p}{q})^{2} \equiv 6q^{2} = p^{2} = 2\cdot3q^{2} = p^{2}$. Therefore $p^{2}$ must be even, then $p$ is even. Let's say $p=2k \Rightarrow p^{2} = 4k^{2} = 2\cdot 3q^{2} \equiv \frac{2}{3}k^{2} = q^{2}$, but $q^{2}$ is a multiple of $2$ hence $q^{2}$ is even, and so is $q$. This is a contradtion because we assumed that either $p$ or $q$ is odd.
+    \end{proof}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,24 @@
+\documentclass[11pt]{article}
+
+\input{../common.tex}
+\begin{document}
+\customheading{\today}{Proofs: Pigeon Hole Principle}{Fall 2024}{CS30 - Discrete Maths}
+
+\section*{}
+\textit{Idea}: Suppose we have $n+1$ pigeons, and $n$ pigeon-holes where $n \in \N$, and every pigeon must land in one of the pigeon-holes, then \textit{there must exist at least 1 pigeon hole with at least 2 pigeons.}
+
+    \begin{theorem}
+        Let $k$ and $n$ be some fixed natural numbers. Let $P$ be a finite set with $|P| \geq kn + 1$. Let $H_{1}, \ldots, H_{n}$ be sets such that $P \subseteq H_{1} \cup H_{2} \cup \ldots \cup H_{n}.$ There \textit{there must exist} an $i$ with $1 \leq i \leq n$ and $|P \cap H_{i}| \geq k+ 1$
+    \end{theorem}
+    The element of $P$ can be thought as the ``pigeons'', and the $H_{i}'s$ are the $n$ different ``holes''.
+
+    \begin{proof}
+        Since $P \subseteq H_{1} \cup, \ldots H_{n}$, we get \\
+        \begin{gather}
+            kn+1 \leq |P| = |P \cap (H_{1} \cup \ldots \cup H_{n}) = |(P \cap H{1}) \cup (P \cap H_{2}) \cup \ldots (P \cap H_{n})| \\
+            kn+1 \leq \sum_{i=1}^{n} |P \cap H_{i}| \Rightarrow \exists 1 \leq i \leq n, |P \cap H_{i}| \geq k + 1
+        \end{gather}
+    \end{proof}
+    \textbf{Contradiction}:  if \textit{all} $|P \cap H_{i}| < k+1 \equiv |P \cap H_{i}| \leq k$, we would get $\sum_{1=1}^{n} |P \cap H| \leq kn$ which contradicts that the sum is $\geq kn + 1.$
+
+\end{document}
