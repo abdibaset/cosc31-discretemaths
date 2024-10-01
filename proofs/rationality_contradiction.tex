@@ -2,7 +2,7 @@
 
 \input{../common.tex}
 \begin{document}
-\customheading{\today}{Proof by contradtion: Rationality of Numbers}{Fall 2024}{CS30 - Discrete Maths}
+\customheading{\today}{Proof by contradiction: Rationality of Numbers}{Fall 2024}{CS30 - Discrete Maths}
 
 \section*{}
 \begin{enumerate}
@@ -20,6 +20,27 @@
     \item Prove that $\sqrt{6}$ is irrational.
     \begin{proof}
         Suppose $\sqrt{6}$ were rational, i.e. $\sqrt{6} = \frac{p}{q}$ where $p$ and $q$ are some positive integers, and at least one of them is odd.If you square all sides, you will have, $ 6 = (\frac{p}{q})^{2} \equiv 6q^{2} = p^{2} = 2\cdot3q^{2} = p^{2}$. Therefore $p^{2}$ must be even, then $p$ is even. Let's say $p=2k \Rightarrow p^{2} = 4k^{2} = 2\cdot 3q^{2} \equiv \frac{2}{3}k^{2} = q^{2}$, but $q^{2}$ is a multiple of $2$ hence $q^{2}$ is even, and so is $q$. This is a contradtion because we assumed that either $p$ or $q$ is odd.
+    \end{proof}
+
+    \item Let $a$ and $b$ be two positive integers such that $a > b$, and $\sqrt{a}$ and $\sqrt{b}$ are both irrational numbers. Show that $\sqrt{a} + \sqrt{b}$ is always irrational.
+    \begin{proof}
+        Suppose $\sqrt{a} + \sqrt{b} = q$ Consider the product of difference of squares
+        \begin{gather}
+            q \cdot (\sqrt{a} - \sqrt{b}) = a-b
+        \end{gather}
+        Therefore, if $q$ is rational, then $r:=(\sqrt{a} - \sqrt{b}) = \frac{a-b}{q}$ is also rational.
+    \end{proof}
+    \begin{proof}
+        Another style of proof:
+        Suppose $\sqrt{a} + \sqrt{b} = q$ is rational
+        \begin{gather}
+            \sqrt{a} = q-\sqrt{b} \\
+            a = (q - \sqrt{b})^{2} \\
+            a = q^{2} - 2q\sqrt{b} + b \\
+            \sqrt{b} = \frac{b-a+q^{2}}{2q}
+        \end{gather}
+
+        Since $a$ and $b$ are integers, the result of RHS is an integer, and $\sqrt{b}$ equals an integer divided by a rational number, hence $\sqrt{b}$ is a rational number, however, we initially assumed that $b$ is rational hence the contradiction.
     \end{proof}
 \end{enumerate}
 

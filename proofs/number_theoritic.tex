@@ -1,0 +1,23 @@
+\documentclass[11pt]{article}
+
+\input{../common.tex}
+\begin{document}
+\customheading{\today}{Proof by Contradiction: Number theoritic}{Fall 2024}{CS30 - Discrete Maths}
+
+\begin{definition}
+Number theory - study of the integers (eg: whole numbers) and related objects.
+\end{definition}
+
+\begin{enumerate}
+    \item Let $N$ be a composite (i.e., not prime) number. Prove that there must exist an integer $a$ such that $2 \leq a \leq \sqrt{N}$ and $a$ divides $N$.
+    \begin{gather}
+        \forall N \in \N, \exists a \in \{2, \ldots, \lfloor \sqrt{N} \rfloor\} : a | N \\
+        \text{negation}: \exists N \in \N, \forall a \in \{2, \ldots, \lfloor \sqrt{N} \rfloor\} : a \not | N
+    \end{gather}
+    \begin{proof}
+        Suppose $a \not | N$ for every $a$. Since $N$ is composite, there must be two numbers $m$ and $n$ such that $2 \leq m < N$ and $2 \leq n  < N$, and $N = mn$. \\
+
+        Our supposition states that $m > \sqrt{N}$; otherwise, $2 \leq m \leq \sqrt{N}$ and $m$ divides $N$. However, that implies that $mn > \sqrt{N} \cdot \sqrt{N} = N$ which is a contradicts $N = mn$, therefore, the statement holds. 
+    \end{proof}
+\end{enumerate}
+\end{document}
