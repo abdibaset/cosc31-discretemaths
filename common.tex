@@ -50,15 +50,15 @@
 
 %% credit statement
 \newcommand{\creditstatement}[1][alone]{
-    \ifthenelse{\equal{#1}{alone}}{
+    % \ifthenelse{\equal{#1}{alone}}{
     \begin{center}
-        {\fontsize{14}{16}\selectfont \textbf{\textit{Credit statement: I worked alone on this assignment.} \\}}
+        {\fontsize{14}{16}\selectfont \textbf{\textit{Credit statement: I worked alone on this assignment with reference to: #1} \\}}
     \end{center}
-    }{
-    \begin{center}
-        {\fontsize{14}{16}\selectfont\textbf{\textit{Credit statement: I discussed the problems with #1, but worked alone on my solutions} \\}}
-    \end{center}
-    }
+    % }{
+    % \begin{center}
+    %     {\fontsize{14}{16}\selectfont\textbf{\textit{Credit statement: I discussed the problems with #1, but worked alone on my solutions} \\}}
+    % \end{center}
+    % }
 }
 
 %% heading

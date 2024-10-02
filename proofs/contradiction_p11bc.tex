@@ -1,0 +1,53 @@
+\documentclass[11pt]{exam}
+
+\input{../common.tex}
+\begin{document}
+\customheading{\today}{Problem 11bc: Proof by Contradiction}{Fall 2024}{CS30 - Discrete Maths}
+\begin{center}
+    Credit statement: \textit{ I have worked alone on this assignment with reference to this resource \href{https://en.wikipedia.org/wiki/Fundamental_theorem_of_arithmetic}{wikipedia}}
+\end{center}
+
+
+\section*{}
+\begin{parts}
+    \part Let $N$ be any natural number at most $2^{k}$ for some $k \in \N$. Prove that $N$ can have at most $k$ distinct prime factors.
+    \begin{customsolutionbox}
+        In predicate logic, this statement and its negation can be presented as:
+        \begin{gather}
+            \forall N \in \N, \exists k \in \N : (N \leq 2^{k}) \Rightarrow \text{number of distinct prime number of} \hs N \leq k\\
+            \text{negation}: \exists N \in \N, \forall k \in \N: (N \leq 2^{k}) \Rightarrow \text{number of distinct prime number of} \hs N > k
+        \end{gather}
+
+        \begin{proof}
+            Suppose there exists a natural number $N$, and any natural number $k$ such that $N \leq 2^{k}$, and $N$ has more than $k$ distinct prime numbers.\\
+
+            My supposition is that $N$ has at least $k+1$ prime numbers i.e., $\{p_{1}, p_{2}, \ldots, p_{k+1}\}$ for \textit{every} $k$. Since the smallest prime is $2$ we cay that $p_{1}\cdot p_{2} \cdot \ldots p_{k+1} \geq 2^{k+1}$, thus we have $N \geq  p_{1}\cdot p_{2} \cdot \ldots p_{k+1} \geq 2^{k+1}$ because $N$ is atleast the product of its prime numbers. However, this contradicts my initial assumption that $N \leq 2^{k}$. Therefore, assumption $N$ has at most $k$ prime numbers for some $k$ is true.\\
+        \end{proof}
+    \end{customsolutionbox}
+
+      \part Prove that there can be no integers $x$ and $y$ such that $4x^{2} = y^{2} +1$
+      \begin{customsolutionbox}
+        Statement and its negation \\
+
+        \begin{gather}
+            \forall x \in \Z, \forall y  \in \Z: 4x^{2}  \not = y^{2} + 1 \\
+            \text{negation }: \exists x \in \Z, \exists y \in \Z: 4x^{2}  = y^{2} + 1
+        \end{gather}
+        Suppose there is some integer $x$ and $y$ such that $4x^{2} = y^{2} + 1$. \\
+        Rearranging:
+        \begin{gather}
+            4x^{2} - y^{2} = 1 \\
+            (2x - y)\cdot(2x + y) = 1 \hs \text{difference of squares} \\
+        \end{gather}
+        let $p = 2x-y$ and $q = 2x+y$.
+        \begin{gather}
+            p = \frac{1}{2x+y}  \\
+            q = \frac{1}{2x-y} \\
+            p \cdot q = 1
+        \end{gather}
+
+        As shown, $p$ is not an integer  hence either $x$ or $y$ or both are not integers because the difference of two integers is an integer. Similarly for $q$ is not an integer hence either $x$ or $y$ or both are not integers because sum of two integers is an integer. As observed, either $x$ or $y$ or both are not integers. Therefore, the contradiction that there are some integers $x$ and $y$ such that $4x^{2}  = y^{2} + 1$
+      \end{customsolutionbox}
+\end{parts}
+
+\end{document}
