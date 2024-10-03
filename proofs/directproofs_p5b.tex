@@ -10,49 +10,36 @@
         \begin{enumerate}
             \item if $F(j-1, k) = 1$ then $F(j, k) = 1$
             \begin{customsolutionbox}
-                This implies that if there exists a subset $S' \subseteq \{1, 2, 3, \ldots j-1\}$ such that $\sum_{i \in S'} a_{i} = k$, then there exists a subset of $S \subseteq \{1, 2, 3, \ldots j\}$ such that $F(j, k) = 1$ \\
 
                 To prove this, let's consider the following:
                 \begin{gather}
-                    \text{let} \hs S \subseteq \{1, 2, \ldots, j\} \\
-                    \text{and let } S' \subseteq \{1, 2, \ldots, j-1\}
+                    \text{let's fix } S \subseteq \{1, 2, 3, \ldots j\} \\
                 \end{gather}
-                \begin{itemize}
-                    \item Case 1: if $j \not \in S$, then we can consider a subset $S' \subseteq S$ such that $\sum_{i \in S'} a_{i} = k$. This aligns with our assumption that $F(j-1, k) =1$
-                    \item Case 2: if $j \in S$ then we consider the subsets of $S$. In this case, \textit{there exists} a subset $S' \subseteq S$ such that $\sum_{i \in S'} a_{i} = k$. Thus, it follows that $F(j, k) = 1$.
-                \end{itemize}
+                Suppose $j \not \in S$, we have a subset of $S^{*} = S \setminus \{j\} = \{1, 2, \ldots, j-1\}$,such that $\sum_{i \in S^{*}} a_{i} = k$. Therefore, since $S^{*} \subseteq S$, we conclude that $\sum_{i \in S} a_{i} = k$ hence $F(j, k) = 1$
             \end{customsolutionbox}
 
             \item if $F(j-1, k-a_{j}) = 1$ then $F(j, k) = 1$
             \begin{customsolutionbox}
-                This implies that if there exists a subset $S' \subseteq S$, where $S = \{1, 2, \ldots, j\}$, such that $\sum_{i \in S'} a_{i} = k-a_{j}$, then it follows that $F(j, k) = 1$ \\
-
-                To prove this consider the following:
+                To prove this, let's consider the following:
                 \begin{gather}
-                    \text{let} \hs S \subseteq \{1, 2, \ldots, j\} \\
+                    \text{let's fix } S \subseteq \{1, 2, 3, \ldots j\} \\
                 \end{gather}
-                \begin{enumerate}
-                    \item Case 1: Suppose $j \not \in S$. If there exists a subset $S' \subseteq S$ such that $\sum_{i \in S'} a_{i} = k - a_{j}$, then it follows that $F(j-1, k-a_{j}) = 1$. Here the assumption is that $k$ is the sum of first $j$ elements.
-                    \item Case 2: Suppose $j \in S$. If there exists a subset $S' \subseteq S$ such that $\sum_{i \in S'} a_{i}= k-a_{j}$, then adding $a_{j}$ gives $\sum_{i \in S'} a_{i} +a_{j} =k$. Therefore, it follows that $F(j, k) = 1$.
-                \end{enumerate}
+                Suppose $j \in S$ such that $\sum_{i \in S} a_{i} = k$ and $F(j, k) = 1$, there exists a subset $S^{*} = S \setminus \{j\} = \{1, 2, \ldots, j-1\}$ such that $\sum_{i \in S^{*}} a_{i} = k - a_j$ hence the assumption $F(j-1, k-a_j) = 1$ is true, and overall the implication is true.
             \end{customsolutionbox}
         \end{enumerate}
 
     \part For any $j \geq 1$ and any $k \in \N$ argue that $F(j, k) = 1$ then either $F(j-1, k) = 1$ or $F(j-1, k-a_{j}) = 1$
         \begin{customsolutionbox}
-            $F(j, k) =1$, implies that there exists subset of $S$, where $S \subseteq \{1, 2, \ldots, j\}$, such that $\sum_{i \in S'} a_{i} = k$. here $S' \subseteq S$ \\
 
-            To prove if $F(j-1, k) = 1$ or $F(j-1, k-a_{j}) = 1$, consider the following:
+            To prove that $F(j-1, k) = 1$ or $F(j-1, k-a_{j}) = 1$, consider the following:
             \begin{gather}
-                \text{let} \hs S \subseteq \{1, 2, \ldots, j\} \\
+                \text{let's fix } S \subseteq \{1, 2, 3, \ldots j\} \\
             \end{gather}
             \begin{enumerate}
-                \item If $F(j, k)= 1$ and $j \not \in S$, then $S \subseteq \{1, 2, \ldots j-1\}$. If there exists $S' \subseteq S$ such that $\sum_{i \in S'} a_{i} = k$ then this implies that $F(j-1, k) =1$.
-
-                \item If $F(j, k)= 1$ and $j \in S$, then $S \subseteq \{1, 2, \ldots j\}$. If there exists $S' \subseteq S$ such that $\sum_{i \in S'} a_{i}= k- a_{j}$ then this implies $F(j-1, k-a_{j}) =1$.
+                \item Case 1: $j \not \in S$ and $F(j, k) = 1$. In this case, the assumption is that there exists a subset $S^{*} = S \setminus \{j\} = \{1, 2, \ldots, j-1\}$ such that $\sum_{i \in S^{*}} a_{i} = k$. Therefore, we can conclude that $F(j-1, k) = 1$.
+                \item Case 2. $j \in S$. In this case, we assume there exists a subset of $S$ such that $\sum_{i \in S} a_{i} = k$ hence $F(j, k) = 1$. We can conclude there is a subset $S^{*} = S \setminus \{j\} = \{1, 2, \ldots, j-1\}$ such that $\sum_{i \in S^{*}} a_i = k - a_j$ hence  $F(j-1, k-a_j) = 1$
             \end{enumerate}
-
-            Conclusion: Both cases are valid because there exists a subset $S$ that satisfies the conditions.
+            Thus, we have shown that if $F(j-1, k) = 1$ or $F(j-1, k-a_j) = 1$ then it follows that $F(j,k) = 1$
         \end{customsolutionbox}
 \end{parts}
 \end{document}

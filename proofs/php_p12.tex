@@ -1,7 +1,62 @@
-\documentclass[11pt]{exam}
+\documentclass[10pt]{exam}
 
 \input{../common.tex}
 \begin{document}
 \customheading{\today}{Problem 12: Proof by PHP}{Fall 2024}{CS30 - Discrete Maths}
+\section*{}
+\begin{parts}
+    \part Prove that any odd number $n$ which isn't divisible by 5 has a multiple which, in decimal notation, looks like a string of consecutive 1s. Next, write code which takes $n = 1729$ is fed to your code. \\
+
+    For example, $n=7, 111111 = 7 \cdot 15873$ is one such multiple, and your code should return the same.
+
+    \textit{Hint: if $n$ is odd not divisible by 5(and so relatively prime with 10), and a number $xyz0$ is a multiple of $n$, then $xyz$ is also a multiple of $n$.}
+
+    \begin{customsolutionbox}
+        To generate a number of a string of 1s denoted as $m_{k}$, we can use the following:
+        \begin{gather}
+            m_{k} = \frac{10^{k}-1}{9} \\
+            k = 1; \frac{10^{1}-1}{9} = 1\\
+            k = 2; \frac{10^{2}-1}{9} = 11 \\
+            k = 3; \frac{10^{3}-1}{9} = 111
+        \end{gather}
+        As shown, each $m_{k}$ represents a number made up of $k$ consecutive 1s. Since $n$ is an odd number not divisible by 5, it is relatively prime to 10, which means $m_k$ cannot be congruent to 0 modulo 5. \\
+
+        Suppose $n$ is divisible by $m_{k}$ then:
+        \begin{gather}
+            m_{k}\mod n = 0 \\
+            \frac{10^{k}-1}{9} \mod n = 0
+        \end{gather}
+
+        To prove that a $k$ exists such that remainders start repeating when $m_{k}$ divided by $n$ we can apply pigeon-hole prinicple. The set of possible remainders is $\{0, 1, 2, \ldots, n-1\}$ are the pigeon-holes in this case, and $m_{k}$, i.e., the string of 1s is the number of holes.By pigeonhole prinicple, since there are only $n$ possible remainders, and we can create an inifinite sequences of remainders as $k$ increases, at least two of these remainders must repeat.
+
+        Suppose the remainders repeat at $k^{*}$ and $k$ when $k^{*} < k$ then:
+        \begin{gather}
+            m_{k^{*}} \mod n \equiv m_{k} \mod n; \\
+        \end{gather}
+        which implies
+        \begin{gather}
+            m_{k} - m_{k^{*}} \mod n = 0
+        \end{gather}
+        Thus, we conclude that there exists a multiple of $n$ which is a string of consecutive 1s for a given $k$
+    \end{customsolutionbox}
+
+    \subsection{code}
+    \begin{verbatim}
+        def PigeoholePrinciple(oddNumber: int):
+            stringOf1s = 1 ## (10^1 -1)/9 where k = 1
+            k = 2
+
+            while stringOf1s % oddNumber != 0:
+                stringOf1s = ((10**k) - 1) // 9
+                k += 1
+            return int(stringOf1s)
+
+        print(PigeoholePrinciple(7), `has length ', len(str(PigeoholePrinciple(7))))
+        print(PigeoholePrinciple(9), `has length ', len(str(PigeoholePrinciple(9))))
+        print(PigeoholePrinciple(1729), `has length ', len(str(PigeoholePrinciple(1729))))
+    \end{verbatim}
+
+    Therefore when $n = 1729$, a string 1s of length 18 will be divisible by $n$
+\end{parts}
 
 \end{document}
