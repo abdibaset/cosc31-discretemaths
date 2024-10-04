@@ -1,0 +1,52 @@
+\documentclass[11pt]{article}
+
+\input{../common.tex}
+\begin{document}
+\customheading{\today}{Principle of Mathematical Induction}{Fall 2024}{CS30 - Discrete Maths}
+
+\begin{enumerate}
+    \item Does 4 divide by $n^4-n$ for all non-negative integers $n$
+    \begin{customsolutionbox}
+        Let $P(n)$ be true when $n^4 -n$ is divisible by $4$ for every $n$
+        \begin{gather}
+            \forall n \in \N: P(n)
+        \end{gather}
+        Base case:
+        \begin{gather}
+            n = 0 \rightarrow 0^4-0 = 0 \mod 4 = 0 \\
+            n = 1 \rightarrow 1^4 - 1 = 0 \mod 4 = 0
+        \end{gather}
+        Inductive case: Fix $k \geq 1$ \\
+        Inductive hypothesis: For $l$ in $0 \leq l \leq k$ such that $P(l) \mod 4 = 0$ is true. \\
+        Goal: $P(k+1)$ is true? \\
+        \begin{gather}
+            P(k+1) \mod 4 = 0 ? \\
+            ((k+1)^4 - (k+1)) \mod 4 = 0 \\
+            k^4 + 4k^3 + 6k^2 + 4k + 1 - (k+1) \equiv k^4+4k^3+6k^2 + 3k\\
+            (k^4 - k) + 4(k^3 + k)+6k^2
+        \end{gather}
+        There are 3 parts here, $k^4+k$ which is divisible by 4 as inductive hypothesis states. $4(k^3+k)$ is divisible by $4$ because it is a multiple of 4, but $6k^2$ isn't divisible by $4$.
+    \end{customsolutionbox}
+
+    \item For all $n \in \N$, 3 is divides $n^3-n$
+    \begin{customsolutionbox}
+        Let $P(n)$ be true when $(n^3-n) \mod 3 = 0$
+        Base case
+        \begin{gather}
+            n = 1 \rightarrow (1^3 -1) \mod 3 = 0 \\
+            n = 2 \rightarrow (2^3 - 2) \mod 3 = 0
+        \end{gather}
+        Inductive case
+        \begin{gather}
+            \text{Fix } k \geq 1
+        \end{gather}
+        Inductive hypothesis. $P(k)$ is true for any $l, 1 \leq l \leq k$ \\
+        Goal: is $P(k+1) \mod \stackrel{?}{=} 0$
+        \begin{gather}
+            (n+1)^3 - (n+1) \\
+            n^3 + 3n^2 + 3n + 1 - n - 1 \equiv (n^3 - n) + 3(n^2+n)
+        \end{gather}
+        By inductive hypothesis $n^3 - n$ is divisible by 3, and $3(n^2+n)$ is divisible by 3 because it is a multiple of $3$. By the prinicple of mathematical induction, $P(n)$ is divisible by $3$
+    \end{customsolutionbox}
+\end{enumerate}
+\end{document}

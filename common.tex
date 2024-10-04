@@ -8,12 +8,14 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{ifthen}
+\usepackage{lipsum}
 \usepackage{mdframed}
 \usepackage{tcolorbox}
 \usepackage{xcolor}
 \usepackage[sfdefault]{plex-sans}
 \usepackage{tikz}
 
+\tcbuselibrary{breakable}
 
 \newcommand{\R}{\ensuremath{\mathbb{R}}}
 \newcommand{\N}{\ensuremath{\mathbb{N}\hspace{1.0mm}}}
@@ -35,6 +37,7 @@
     sharp corners=southwest,
     rounded corners=southeast,
     title=Solution,
+    breakable,
     #1 % answer
 }
 
