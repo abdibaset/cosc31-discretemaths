@@ -1,0 +1,27 @@
+\documentclass[11pt]{exam}
+
+\input{../common.tex}
+\begin{document}
+\customheading{\today}{Problem 14}{Fall 2024}{CS30 - Discrete Maths}
+
+\section*{}
+\begin{parts}
+    \part Suppose a finite number of players play a round-robin tournament, with everyone playing everyone else exactly once. Each match has a winner and a loser (no ties). Prove that we can re-name the players $p_1, \ldots, p_n$ such that $p_1$ has beaten $p_2, p_2$ has beaten $p_3$, and so on. More precisely, for $1 \leq i \leq n-1$, $p_i$ has beaten $p_{i+1}$.
+
+    \begin{customsolutionbox}
+        \begin{proof}
+            Let $P(n)$ be the predicate that is true if ``for any tournament there are $n$ player, $1 \leq i \leq n-1$, such that $p_1$ beats $p_2$, $p_2$ beats $p_3$ and so on". We want to prove $P(n)$ is true $\forall n \in \N: P(n)$ \\
+
+            For the base case validation $n = 1$ is vacuously true because it is only one players. If $n = 2$, one of the players wins so can say $p_1$ has beaten $p_2$ without loss of generality, hence this establishes the base case. \\
+
+            Inductive case: Let's fix $k \geq 1$, and the inductive hypothesis is that $P(a)$ is true for $1 \leq a \leq k$. Now we need to show $P(k+1)$ is true, i.e. $P(k+1)$ has been beaten by some player $p_a$ who was beaten by player $p_{a-1}$. Now Let's consider $P(K+1)$ beats $P(k)$ or is beaten by $P(k)$
+            \begin{itemize}
+                \item case 1: $p_{k}$ is beaten $p_{k+1}$. For this case $P(k+1)$ is true.
+                \item Case 2: $p_{k+1}$ beats $p{k}$. This breaks the sequence $p_i$ beats $p_{i+1}$. We can, therefore, split the players into two groups, that's, Let $A \subseteq \{p_1, p_2, \ldots, p_{k+1}\}$ be all players beaten by $p_{k+1}$, and $B$ be the remaining set of players who have beaten $p_{k+1}$. \\
+
+                Now let's consider cases where $p_{k+1}$ joins either $A$ or $B$. Since $|A| \leq k$ and $|B| \leq $ by inductive hypothesis, there exists a group players such that $p_{1}$ beats $p_{2}$ who beats $p_{3}$ and so on. Therefore, for $A$ we can re-order players as $\{p_1, p_2, \ldots, p_m\}$ such that $p_{k+1}$ appears before $p_1$ to maintain the order. For $B$ we can similarly re-order players as $\{p_1, p_2, \ldots, p_m\}$ such that $p_{k+1}$ appears after $p_m$ to maintain the order. \\
+            \end{itemize}
+        \end{proof}
+    \end{customsolutionbox}
+\end{parts}
+\end{document}

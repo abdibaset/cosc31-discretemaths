@@ -1,0 +1,53 @@
+\documentclass[10pt]{exam}
+
+\input{../common.tex}
+\begin{document}
+\customheading{\today}{Problem 8: Recurrences II}{Fall 2024}{CS30 - Discrete Maths}
+\section*{}
+
+\begin{parts}
+    \part Consider the following recurrence: $t_1 = 1, t_2 = 3$, and $t_n = t_{\lceil\frac{n}{2}\rceil} + t_{\lfloor\frac{n}{2}\rfloor} + 1$ for all $n \geq 3$. Prove that
+    \begin{gather}
+        \forall n \in \N: t_n = 2n - 1
+    \end{gather}
+
+    \begin{customsolutionbox}
+        \begin{proof}
+            Let $P(n)$ be the predicate taking the value true if $t_n = 2n - 1$ for particular $n$, and false otherwise. We can prove $\forall n \in \N: P(n)$ holds \\
+
+            Base case validation: $n = 1, n = 2, n = 3$
+            \begin{align*}
+               t_1 = 2 \cdot 1 - 1 = 1 \\
+               t_2 = 2 \cdot 2 - 1 = 3
+            \end{align*}
+
+            When $n = 3$
+            \begin{align*}
+                t_3 &= 2 \cdot 3 - 1 = 5 \\
+                    &= t_{\lceil\frac{3}{2}\rceil} + t_{\lfloor\frac{3}{2}\rfloor} + 1 \\
+                    &= t_2 + t_1 + 1 = 5
+            \end{align*}
+            This establishes $P(1), P(2), P(3)$ are true. \\
+
+            Inductive case: Fix $k \geq 3$, and the inductive hypothesis is that $P(a)$ is true for $1 \leq a \leq k$. We need to establish that $P(k+1) = 2 (k+1) -1 = 2k + 1$. \\
+
+            We know that:
+            \begin{gather}
+                t_{k+1} = t_{\lceil\frac{k+1}{2}\rceil} + t_{\lfloor\frac{k+1}{2}\rfloor} + 1
+            \end{gather}
+            Since $\lceil\frac{k+1}{2}\rceil \leq k$ and $\lfloor\frac{k+1}{2}\rfloor \leq k$, therefore, by inductive hypothesis we know that $t_{\lceil\frac{k+1}{2}\rceil} = 2 \cdot \lceil\frac{k+1}{2}\rceil - 1$ and  $t_{\lfloor\frac{k+1}{2}\rfloor} = 2 \cdot \lfloor\frac{k+1}{2}\rfloor - 1$:
+
+            \begin{align*}
+                t_{k+1} &= t_{\lceil\frac{k+1}{2}\rceil} + t_{\lfloor\frac{k+1}{2}\rfloor} + 1 \\
+                        &= (2 \cdot \lceil\frac{k+1}{2}\rceil - 1) + (2 \cdot \lfloor\frac{k+1}{2}\rfloor - 1) + 1 \\
+                        & = 2 (\lceil\frac{k+1}{2}\rceil + \lfloor\frac{k+1}{2}\rfloor) - 1    \hspace{20mm} \text{ but } \lceil\frac{k+1}{2}\rceil + \lfloor\frac{k+1}{2}\rfloor = k + 1 \\
+                        &= 2(k+1) - 1 \\
+                        &= 2k + 1
+            \end{align*}
+            Thereby establishing that $P(k+1) = 2k + 1$
+
+        \end{proof}
+    \end{customsolutionbox}
+
+\end{parts}
+\end{document}

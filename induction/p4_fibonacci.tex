@@ -1,0 +1,42 @@
+\documentclass[10pt]{exam}
+
+\input{../common.tex}
+\begin{document}
+\customheading{\today}{Problem 4: Fibonacci form an additive basis of \N}{Fall 2024}{CS30: Discrete Maths}
+
+\section*{}
+\begin{parts}
+    \part The Fibonacci numbers are defined as $F_1 = 1, F_2 = 1$ and $F_n = F_{n-1} + F_{n-2}$ for $n \geq 3$. Thus, the first few Fibonacci numbers are $1, 1, 2, 3, 5, 8, 13, 21, \ldots$ \\
+    Prove that every natural number can be written as a sum of one or more \textit{distinct} Fibonacci numbers.
+
+    \begin{customsolutionbox}
+        \proof Let $P(n)$ be true if any number can be written as a sum of distinct Fibonacci numbers. \\
+
+        Base case $n = 3$:
+
+        \begin{gather}
+            n = 1; \text{ Set of Fibonacci numbers }\{1\} \\
+            n = 2; \text{ Set of Fibonacci numbers } \{2\} \\
+            n = 3; \text{ Set of Fibonacci numbers } \{1, 2\}
+        \end{gather}
+        The base case $n=1, n=2, n=3$ can be written as a sum of distinct Fibonacci numbers. \\
+
+        Inductive case: Fix $k \geq 3$. The inductive hypothesis is that $P(a)$, for $1 \leq a \leq k$. This implies there exists a set of Fibonacci numbers that add to any natural number $k$. \\
+
+        Goal: Prove that $k+1$ is a sum of distinct Fibonacci numbers. \\
+
+        Let $F_m$ be largest Fibonacci number that's less than or equal $k+1$, i.e.. $k+1 \geq F_m$. Suppose we subtract $F_m$ from $k+1$, then we have:
+        \begin{gather}
+            (k+1) - F_m \geq 0
+        \end{gather}
+        Therefore, we can consider two cases below based on the inequality shown above.
+
+        \begin{itemize}
+            \item Case 1:  $(k+1)-F_m = 0$. In this case, $k+1$ itself is a Fibonacci number hence $S := \{F_m\}$
+            \item Case 2: Suppose $(k+1)- F_m > 0$. Let $a = k + 1 - F_m$ for brevity.
+            Since $a \leq k$, by inductive hypothesis, there exists some set of Fibonacci numbers $A$ such that $\sum_{i \in A} i = a$.
+            We now claim that $F_m \not \in A$, and therefore the $S := \{F_m\} \cup A$ satisifies $\sum_{x \in  S} x = a + F_m = k+1$, establishing $P(k+1)$. Suppose for the sake of contradiction $F_m \in A$ then $F_m \leq a$. However, $2 \cdot F_m > k+1$ hence the contradiction.
+        \end{itemize}
+    \end{customsolutionbox}
+\end{parts}
+\end{document}

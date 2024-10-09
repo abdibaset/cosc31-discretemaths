@@ -1,0 +1,58 @@
+\documentclass[10pt]{exam}
+
+\input{../common.tex}
+\begin{document}
+\customheading{\today}{Problem 17b}{Fall 2024}{CS30 - Discrete Maths}
+
+\section*{}
+\begin{parts}
+    \part For $n \geq 2$, let $T(n)$ denote the maximum number of ``reads'' (Line 9)the above code does when the input is a list of length $n$. The code designers have figured out the following:
+
+    \begin{gather}
+        T(2) = 0; \hspace{10mm} \forall n \in \N, n \geq 3: T(n) \leq T(\lceil\frac{n+1}{2}\rceil) + 1
+    \end{gather}
+
+    Using induction, prove the following.
+    \begin{gather}
+        \text{For all } k \in \N, T(2^k) \leq k \hs \textbf{and } T(2^k+1) \leq k
+    \end{gather}
+
+    \begin{customsolutionbox}
+        \proof Let the $P(n)$ be true if for any natural number $k$ $T(2^k) \leq k$ and $T(2^k+1) \leq k$. \\
+
+        Base case when $k = 1$:
+        \begin{gather}
+            k = 1; \hspace{5mm} T(2^1) = T(2) = 0 \leq 1; \hspace{5mm} T(2^1 + 1) = T(3) \leq (T(2) + 1 = 1);
+        \end{gather}
+        Inductive case: Let's fix $q \geq 1$, and the inductive hypothesis is that $P(n)$ is true for $1 \leq a \leq q$. Now we need to establish that $P(k+1)$ is true.
+
+        \begin{gather}
+            T(2^{k+1}) \leq k + 1\\
+            T(2^{k+1} + 1) \leq k + 1
+        \end{gather}
+        Let's start with equation $4$ above:
+        \begin{align*}
+            T(2^{k+1}) \leq T(\lceil\frac{2^{k+1}+1}{2}\rceil) + 1 \\
+            \text{Let } m = \lceil\frac{2^{k+1}+1}{2}\rceil
+        \end{align*}
+        We know that $m \leq q$, therefore by inductive hypothesis $T(\lceil\frac{2^{a+1}+1}{2}\rceil) = T(2^{a}) \leq k$ hence
+
+        \begin{align}
+            T(2^{k+1}) &\leq T(\lceil\frac{2^{k+1}+1}{2}\rceil) + 1 \\
+                   &\leq k + 1
+        \end{align}
+
+        Now let's consider equation 5:
+        \begin{align}
+            T(2^{k+1} + 1) \leq T(\lceil\frac{2^{k+1}+2}{2}\rceil) + 1 \\
+            \text{Let } m = \lceil\frac{2^{k+1}+2}{2}\rceil
+        \end{align}
+        We know that $m \leq q$, therefore by inductive hypothesis $T(\lceil\frac{2^{a+1}+2}{2}\rceil) = T(2^{a}+1) \leq k$ hence
+        \begin{align}
+            T(2^{k+1} + 1) &\leq T(\lceil\frac{2^{k+1}+2}{2}\rceil) + 1 \\
+                            &\leq k + 1
+        \end{align}
+        thereby establishing $P(k+1)$.
+    \end{customsolutionbox}
+\end{parts}
+\end{document}

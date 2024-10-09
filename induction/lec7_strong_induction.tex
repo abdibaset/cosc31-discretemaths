@@ -1,0 +1,68 @@
+\documentclass[11pt]{article}
+
+\input{../common.tex}
+\begin{document}
+\customheading{\today}{Strong Induction}{Fall 2024}{CS30 - Discrete Maths}
+
+\section*{}
+\begin{definition}
+    Strong Induction: We assume the value holds for all values below$k$
+\end{definition}
+
+\begin{theorem}
+    Every natural number $\geq 2$ can be written as a product of its primes and $1$
+\end{theorem}
+\begin{proof}
+    In predicate logic: $p_i$ is the $i^{th}$ prime number \\
+    Let $P(p_1 \cdot p_2 \cdot \ldots \cdot p_i)$ the product of prime numbers
+    \begin{gather}
+        \forall n \in \N, n \geq 2: n = 1 \cdot p_1 \cdot p_2 \cdot \ldots \cdot p_i \\
+        \forall n \in \N, n \geq 2: n = P(p_1 \cdot p_2 \cdot \ldots \cdot p_i)
+    \end{gather}
+    Base case
+    \begin{gather}
+        n = 2; n = 1 \cdot 2
+    \end{gather}
+
+    Inductive case: Fix $k \geq 2$ \\
+    Inductive hypothesis. $P(l)$ is true for $2 \leq l \leq k$ \\
+    Goal: $k+1$. Here we can consider two cases, i.e., when $k+1$ is prime, and when $k+1$ is not prime. \\
+
+    Suppose $k+1$ is prime, then $k+1 = (k+1) \cdot 1$ because a prime number a multiple of itself only and $1$ \\
+
+    If $k+1$ is not prime, then there are prime numbers $a \cdot b$ such that $k+1 = 1 \cdot a \cdot b$ where $2 \leq a \leq k$ and $2 \leq b \leq k$. By inductive hypothesis $P(a)$ and $P(b)$ are true.
+\end{proof}
+
+\textbf{The change problem: } In the country of Borduria, they have three types of coins: a cent, a szlapot,
+and a dinar. A szlapot is worth 3 cents and a dinar is worth 7 cents. You have an unending supply of szlapots and dinars; show that any amount $\geq 12$ cents can be made with only szlapots and dinars. You may have heard of similar such puzzles. In Math terms, it is stating the following theorem.
+
+\begin{theorem}
+    Prove that any number $n \geq 12$ can be expressed as $3x + 7y$
+\end{theorem}
+
+\begin{proof}
+    For this case $n = 3x + 7y \geq 12$. \\
+    In predicate logic
+    \begin{gather}
+        \forall n \geq 12, n \in \N, \exists x \in \N, \exists y \in \N: n = 3x + 7y
+    \end{gather}
+    Base case: $x = 4$ and $y = 0$ \\
+    Inductive case: Fix $k \geq 12$. \\
+    Inductive hypothesis: Assume $P(1), P(2), \ldots, P(l)$ for all $12 \leq l \leq k$ \\
+    Goal: Prove that for $k+1$ there exists some $x$ and $y$
+    \begin{gather}
+        k + 1 = 3x + 7y
+    \end{gather}
+    Similar to the previous idea of weak induction, we can piggyback to the $k$ value by subtracting either $3$ or $7$. This is assumes that the different between $k$ and $k+1$ is either of those numbers. However, we need to ensure that $n \geq 12$ always. Hence, we need to revise the base case to account for these edge cases. \\
+
+    Suppose, we piggyback by assuming the difference between $k$ and $k+1$ = 3, the base case should be at least $14$, hence \textbf{Inductive hypothesis is } $P(l)$ is true for the domain $14 \leq l \leq k$ \\
+    Fix $k \geq 14$
+    \begin{gather}
+        k + 1 = 3x + 3 + 7y \\
+        k + 1 = 3(x + 1) + 7y \\
+        x^* = x + 1; y = y
+    \end{gather}
+    Here $y$ is unchanged. This proves that $P(k+1)$, that's $n$ can be written as $3x + 7y$.
+
+\end{proof}
+\end{document}
