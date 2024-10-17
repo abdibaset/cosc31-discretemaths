@@ -10,16 +10,16 @@
 
     \begin{customsolutionbox}
         \begin{proof}
-            Let $P(n)$ be the predicate that is true if ``for any tournament there are $n$ player, $1 \leq i \leq n-1$, such that $p_1$ beats $p_2$, $p_2$ beats $p_3$ and so on". We want to prove $P(n)$ is true $\forall n \in \N: P(n)$ \\
+            Let $P(n)$ be the predicate that is true if ``for any tournament there are $n$ player, there exists  renaming such that $p_1$ beats $p_2$, $p_2$ beats $p_3$ and so on". We want to prove $P(n)$ is true $\forall n \in \N: P(n)$ \\
 
-            For the base case validation $n = 1$ is vacuously true because it is only one players. If $n = 2$, one of the players wins so can say $p_1$ has beaten $p_2$ without loss of generality, hence this establishes the base case. \\
+            For the base case validation $n = 1$ is vacuously true because it is only one player. If $n = 2$, one of the players wins so can say $p_1$ has beaten $p_2$ without loss of generality, hence this establishes the base case. \\
 
-            Inductive case: Let's fix $k \geq 1$, and the inductive hypothesis is that $P(a)$ is true for $1 \leq a \leq k$. Now we need to show $P(k+1)$ is true, i.e. $P(k+1)$ has been beaten by some player $p_a$ who was beaten by player $p_{a-1}$. Now Let's consider $P(K+1)$ beats $P(k)$ or is beaten by $P(k)$
+            Inductive case: Let's fix $k \geq 1$, and the inductive hypothesis is that $P(a)$ is true for $1 \leq a \leq k$. Now we need to show $P(k+1)$ is true, i.e. $P(k+1)$ has been beaten by some player $p_a$ who was beaten by player $p_{a-1}$. Now let's consider the outcome of the tournament between $P(K+1)$ and $P(k)$.
             \begin{itemize}
-                \item case 1: $p_{k}$ is beaten $p_{k+1}$. For this case $P(k+1)$ is true.
-                \item Case 2: $p_{k+1}$ beats $p{k}$. This breaks the sequence $p_i$ beats $p_{i+1}$. We can, therefore, split the players into two groups, that's, Let $A \subseteq \{p_1, p_2, \ldots, p_{k+1}\}$ be all players beaten by $p_{k+1}$, and $B$ be the remaining set of players who have beaten $p_{k+1}$. \\
+                \item case 1: $p_{k}$ beats $p_{k+1}$. For this case $P(k+1)$ is true.
+                \item Case 2: $p_{k+1}$ beats $p_k$. This breaks the sequence $p_i$ beats $p_{i+1}$. We can, therefore, split the players into two groups, that's, Let $A \subseteq \{p_1, p_2, \ldots, p_{m}\}$ be all players beaten by $p_{k+1}$, and $B$ be the remaining set of players who have beaten $p_{k+1}$. \\
 
-                Now let's consider cases where $p_{k+1}$ joins either $A$ or $B$. Since $|A| \leq k$ and $|B| \leq $ by inductive hypothesis, there exists a group players such that $p_{1}$ beats $p_{2}$ who beats $p_{3}$ and so on. Therefore, for $A$ we can re-order players as $\{p_1, p_2, \ldots, p_m\}$ such that $p_{k+1}$ appears before $p_1$ to maintain the order. For $B$ we can similarly re-order players as $\{p_1, p_2, \ldots, p_m\}$ such that $p_{k+1}$ appears after $p_m$ to maintain the order. \\
+                Now let's consider cases where $p_{k+1}$ joins either $A$ or $B$. Since $|A| \leq k$ and $|B| \leq k$ by inductive hypothesis, we can rename players and re-order such that there exists a group players where $p_{1}$ beats $p_{2}$ who beats $p_{3}$ and so on. Therefore, if $p_{k+1}$ joins $A$ then $p_{k+1}$ can appear before $p_1$ to maintain the order because $p_1$ lost to $p_{k+1}$. Conversely, if they join $B$, we can similarly rename and re-order players as $\{p_1, p_2, \ldots, p_n\}$ such that $p_1$ beats $p_2$, $p_2$ beats $p_3$ and so on, and $p_{k+1}$ appears after $p_n$ to maintain the order because $p_{k+1}$ lost to $p_n$. \\
             \end{itemize}
         \end{proof}
     \end{customsolutionbox}

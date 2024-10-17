@@ -35,7 +35,7 @@
             \item Case 1:  $(k+1)-F_m = 0$. In this case, $k+1$ itself is a Fibonacci number hence $S := \{F_m\}$
             \item Case 2: Suppose $(k+1)- F_m > 0$. Let $a = k + 1 - F_m$ for brevity.
             Since $a \leq k$, by inductive hypothesis, there exists some set of Fibonacci numbers $A$ such that $\sum_{i \in A} i = a$.
-            We now claim that $F_m \not \in A$, and therefore the $S := \{F_m\} \cup A$ satisifies $\sum_{x \in  S} x = a + F_m = k+1$, establishing $P(k+1)$. Suppose for the sake of contradiction $F_m \in A$ then $F_m \leq a$. However, $2 \cdot F_m > k+1$ hence the contradiction.
+            We now claim that $F_m \not \in A$, and therefore the $S := \{F_m\} \cup A$ satisifies $\sum_{x \in  S} x = a + F_m = k+1$, establishing $P(k+1)$. Suppose for the sake of contradiction $F_m \in A$ then $F_m \leq a$. However, $a + F_m > k+1$ hence the contradiction.
         \end{itemize}
     \end{customsolutionbox}
 \end{parts}

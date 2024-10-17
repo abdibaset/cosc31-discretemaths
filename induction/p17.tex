@@ -32,27 +32,21 @@
         \end{gather}
         Let's start with equation $4$ above:
         \begin{align*}
-            T(2^{k+1}) \leq T(\lceil\frac{2^{k+1}+1}{2}\rceil) + 1 \\
-            \text{Let } m = \lceil\frac{2^{k+1}+1}{2}\rceil
-        \end{align*}
-        We know that $m \leq q$, therefore by inductive hypothesis $T(\lceil\frac{2^{a+1}+1}{2}\rceil) = T(2^{a}) \leq k$ hence
-
-        \begin{align}
             T(2^{k+1}) &\leq T(\lceil\frac{2^{k+1}+1}{2}\rceil) + 1 \\
-                   &\leq k + 1
-        \end{align}
+            &\leq  T(\lceil\frac{2^{k}\cdot 2+1}{2}\rceil) + 1\\
+            &\leq  T(\lceil2^k + \frac{1}{2}\rceil) + 1 \\
+            &\leq T (2^k + 1) + 1;  \hspace{5mm} \text{By inductive hypothesis, we know that } T(2^{a} + 1) \leq a\\
+            &\leq k + 1
+        \end{align*}
 
         Now let's consider equation 5:
         \begin{align}
-            T(2^{k+1} + 1) \leq T(\lceil\frac{2^{k+1}+2}{2}\rceil) + 1 \\
-            \text{Let } m = \lceil\frac{2^{k+1}+2}{2}\rceil
-        \end{align}
-        We know that $m \leq q$, therefore by inductive hypothesis $T(\lceil\frac{2^{a+1}+2}{2}\rceil) = T(2^{a}+1) \leq k$ hence
-        \begin{align}
             T(2^{k+1} + 1) &\leq T(\lceil\frac{2^{k+1}+2}{2}\rceil) + 1 \\
-                            &\leq k + 1
+            &\leq  T(\lceil\frac{2^{k}\cdot 2+2}{2}\rceil) + 1 \\
+            &\leq  T(\lceil 2^k + 1 \rceil) + 1 \\
+            &\leq T(2^k + 1) + 1;   \hspace{5mm} \text{By inductive hypothesis, we know that } T(2^{a} + 1) \leq a  \\
+            &\leq k + 1
         \end{align}
-        thereby establishing $P(k+1)$.
     \end{customsolutionbox}
 \end{parts}
 \end{document}

@@ -1,0 +1,59 @@
+\documentclass[9pt]{exam}
+
+\input{../common.tex}
+\begin{document}
+\customheading{\today}{Problem 3: Number of functions}{Fall 2024}{CS30 - Discrete Maths}
+
+\section*{}
+Give short and precise reasons for your answers below. All functions mentioned below are of the form $f: A \rightarrow B$ for some finite sets $A$ and $B$.
+\begin{parts}
+    \part How many functions are where $|A| = n$ and $|B| = m$
+        \begin{customsolutionbox}
+            * If there are $n$ elements in the domain, i.e., set $|A| = n$, each element in the domain has $m$ options to map to in the codomain, i.e., $|B|=m$. Therefore, by the product priniciple, the number of functions are:
+            \begin{gather}
+                \text{Number of functions } = m^n
+            \end{gather}
+        \end{customsolutionbox}
+
+    \part How many \textit{bijective} functions are there where $|A| = n$ and $|B| = n$
+        \begin{customsolutionbox}
+            * A bijective function has to be both injective(one-to-one) and surjective. We know that that an injective function is a surjective function, but surjective function may not always be injective. Therefore:
+            \begin{itemize}
+                \item $1^{st}$ element in the domain, $A$, has $n$ options to map to in the codomain, $B$.
+                \item $2^{nd}$ element in the domain, $A$, has $n-1$ options to map to in the codomain.
+                \item $3^{rd}$ element in the domain, $A$, has $n-2$ options to map to in the codomain.
+            \end{itemize}
+            Therefore, by the product priniciple, the number of \textit{bijective} functions are:
+            \begin{gather}
+                \text{Number of \textit{bijective} functions } = n! \equiv n \cdot (n-1) \cdot (n-2) \cdot \ldots \cdot 1
+            \end{gather}
+        \end{customsolutionbox}
+
+    \part How many injective functions are there when $|A| =n $ and $|B|=m$
+        \begin{customsolutionbox}
+            * An injective function maps every element in the domain, $A$ to exactly one element in the codomain, $B$, and two element in the domain cannot map to the same elemnent in the codomain. Therefore, $n \leq m$. hence by the division priniciple, the number of injective functions are:
+            \begin{itemize}
+                \item $1^{st}$ element in the domain, $A$, has $m$ options in the codomain, $B$, to map to.
+                \item $2^{nd}$ element in the domain, $A$, has $m-1$ options in the codomain, $B$, to map to.
+                \item $3^{rd}$ element in the domain, $A$, has $m-2$ options in the codomain $B$ to map to.
+                \item \ldots
+                \item Last element in the domain, $A$ maps to $m-n+1$ element in the codomain, $B$, therefore, the number of injective functions are:
+            \end{itemize}
+            \begin{gather}
+                \text{Number of \textit{injective} functions } = \frac{m!}{(m-n)!}
+            \end{gather}
+        \end{customsolutionbox}
+
+    \part How many surjective functions are there when $|A| = n$ and $|B| = 2$
+        \begin{customsolutionbox}
+            * A surjective function has every element in the codomain has at least one element in the domain that maps to it. Therefore, for every element in the domain has $2$ options in the codomain to map to, hence:
+            \begin{gather}
+                \text{Number of functions } = 2^n
+            \end{gather}
+            However, there are two possibilities where every element in the domain maps to a single element in the codomain making the function non-surjective. Hence the total number of surjective functions are:
+            \begin{gather}
+                \text{Number of surjective functions } = 2^n - 2
+            \end{gather}
+        \end{customsolutionbox}
+\end{parts}
+\end{document}

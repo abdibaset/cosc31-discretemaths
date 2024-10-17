@@ -35,7 +35,7 @@
             \begin{gather}
                 t_{k+1} = t_{\lceil\frac{k+1}{2}\rceil} + t_{\lfloor\frac{k+1}{2}\rfloor} + 1
             \end{gather}
-            Since $\lceil\frac{k+1}{2}\rceil \leq k$ and $\lfloor\frac{k+1}{2}\rfloor \leq k$, therefore, by inductive hypothesis we know that $t_{\lceil\frac{k+1}{2}\rceil} = 2 \cdot \lceil\frac{k+1}{2}\rceil - 1$ and  $t_{\lfloor\frac{k+1}{2}\rfloor} = 2 \cdot \lfloor\frac{k+1}{2}\rfloor - 1$:
+            Since $\lceil\frac{k+1}{2}\rceil \leq k$ and $\lfloor\frac{k+1}{2}\rfloor \leq k$, by inductive hypothesis we know that $t_{\lceil\frac{a+1}{2}\rceil} = 2 \cdot \lceil\frac{a+1}{2}\rceil - 1$ and  $t_{\lfloor\frac{a+1}{2}\rfloor} = 2 \cdot \lfloor\frac{a+1}{2}\rfloor - 1$:
 
             \begin{align*}
                 t_{k+1} &= t_{\lceil\frac{k+1}{2}\rceil} + t_{\lfloor\frac{k+1}{2}\rfloor} + 1 \\
