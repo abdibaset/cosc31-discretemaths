@@ -1,0 +1,56 @@
+\documentclass[9pt]{exam}
+
+\input{../common.tex}
+\begin{document}
+\customheading{\today}{Problem 10: Subsequences and Substrings}{Fall 2024}{CS 30: Discrete Maths}
+\section*{}
+In both problems, obtain a solution via a bijection from/to a set whose cardinality you already know/can
+easily figure out. Describe the bijection well and say a line or two why it is a bijection (i.e, injection &
+surjection).
+
+\begin{parts}
+    \part Given a string $s[1 : n]$ with n characters, a \textit{substring} $t$ is a contiguous part of the string $s$. For example, if the string $s$ = banana, then ban, nana, the empty string $\bot$, the while string banana are all valid substrings. The strings bnn or apple are not. It is important for this question that the indices of s where the substring appears matter, and so, an appearing in locations 2 and 3 of
+    $s$ is considered a different substring than the an appearing in locations 4 and 5 of s.
+    How many substrings does a string $s[1 : n]$ with $n$ characters have? \\
+
+    Your answer should be a function of $n$. For concreteness, write down the numerical answer for $n = 5$
+
+    \begin{customsolutionbox}
+       There is a bijective function that maps the set of substrings to their corresponding start and end indices in $s[1:n]$. Consider the set of substrings as the domain which is mapped to a pair of start and end indices $(i, j)$, where $1 \leq i \leq j \leq n$. \\
+
+       \begin{enumerate}
+        \item  If $(i = j)$, then the substring's length is 1
+        \item  If $(i < j)$, then the substring's length is at least 2
+       \end{enumerate}
+       Since, we have $n$ elements corresponding to the length of $s[1:n]$, we can derive all possible substrings by considering the following cases:
+       \begin{enumerate}
+        \item $k = 2$ when $i < j$, that's we have two unique indices, start and end
+        \item $k = 1$ when $i = j$
+       \end{enumerate}
+       Hence, the total number of substrings including the empty string is given:
+        \begin{gather}
+            \text{All possible substrings } = {n \choose 2} + {n \choose 1} + \bot \\
+        \end{gather}
+        When $n = 5$:
+        \begin{gather}
+            \frac{5!}{2!\cdot(5-2)!} +  \frac{5!}{1!\cdot(5-1)!}  + 1 =  16
+        \end{gather}
+    \end{customsolutionbox}
+
+    \part Given a string $s[1 : n]$ with $n$ characters, a \textit{subsequence} t is a string whose characters appear in $s$ in the same order, however, not necessarily contiguously. For example, if the string $s$ = banana, then all substrings defined in part (a) are valid subsequences. But so is baa since the characters
+    b, a, a do appear in banana in that order in positions $1$, $2$ and $4$. Note that positions $1$, $2$ and $6$ also give the \textit{subsequence} baa and for this question this is considered to be a different subsequence. The string baan is also a valid subsequence appearing in positions $1, 2, 4, 5$. But baann is not a \textit{subsequence}. \\
+
+    How many subsequences does a string $s[1 : n]$ with n characters have? Your answer should be a
+    function of $n$. For concreteness, write down the numerical answer for $n = 5$.
+    \begin{customsolutionbox}
+        We can consider each character in $s[1:n]$ having two possibilities $S = \{0, 1\}$, where it can either be included(1) or excluded(0) from $s[1:n]$ to form a subsequence. There exists bijective function whose domain is the set of subsequences, and the co-domain is a set of binary sequences. This bijective function maps each subsequence of $s[1:n]$ to a unique binary sequence of length $n$ in the co-domain, where each bit represents whether the corresponding character is included or not \\
+
+        Therefore, the total number of possible subsequences is given by the size of the set $|S = \{0, 1\}^n|$, which is  $2^n$. This accounts for all possible subsequences, including the empty string. \\
+
+        When $n = 5$
+        \begin{gather}
+            \text{All possible subsequences } = 2^5 = 32
+        \end{gather}
+    \end{customsolutionbox}
+\end{parts}
+\end{document}
