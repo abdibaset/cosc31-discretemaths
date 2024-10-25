@@ -1,0 +1,30 @@
+\documentclass[11pt]{exam}
+
+\input{../common.tex}
+\begin{document}
+\customheading{\today}{Problem 27:Counting Composition}{Fall 2024}{CS 30 - Discrete Maths}
+\section*{}
+\begin{parts}
+    \part Given a number $n$, a composition is a sequence $(a_1, a_2, \ldots)$ whose entries are positive integers which
+    sum up to $n$. For example, for $n = 5$, the sequences $(5), (1, 4), (4, 1)$, and $(2, 3)$ are four different
+    sequences of the number $5$. How many compositions does the number $n$ have? Your answer should be a simple function of $n$.
+    \begin{customsolutionbox}
+        We can get the number of possible sequences using the stars and bars method. Suppose we have $n$ stars, and $n-1$ possible bars(corresponding to number of gaps between stars) which partitions the stars up to $n-1$ groups. Each star represents 1 unit. The sum of the stars bounded by two dividers forms an element of the sequence. For example:
+        \begin{align}
+            0 \text{ bars } \Rightarrow ***** &= (5) \sum{(5)} = 5 \\
+            2  \text{ bars } \Rightarrow **|**|* &= (2, 2, 1) \sum{(2, 2, 1)} = 5 \\
+            3 \text{ bars } \Rightarrow *|*|*|** &= (1, 1, 1, 2) \sum{(1, 1, 1, 2)} = 5 \\
+            4 \text{ bars } \Rightarrow *|*|*|*|* &= (1, 1,1, 1, 1) \sum{(1, 1, 1, 1, 1)} = 5
+        \end{align}
+        Consider the bars as a string of length $n-1$. If the $i^{th}$ bar where $1 \leq i \leq n -1$ is included in partitioning the stars into groups, then it is represented as $1$, otherwise $0$. For above cases we have:
+        \begin{align}
+            0  \text{ bars } \Rightarrow ***** &= 0000 \\
+            2 \text{ bars } \Rightarrow **|**|* &= 0101 \\
+            3  \text{ bars } \Rightarrow *|*|*|** &= 1110 \\
+            4  \text{ bars } \Rightarrow *|*|*|*|* &= 1111
+        \end{align}
+        Therefore, as illustrated above we can establish a bijective function that maps the set of bars (created by the bars) to a set of binary strings of length $n-1$. Each bit has $S=\{0, 1\}$ possibilities. The total number of sequences can be given by the size of the set $|\{0, 1\}^{n-1}|$ which is $2^{n-1}$.
+    \end{customsolutionbox}
+
+\end{parts}
+\end{document}

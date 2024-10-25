@@ -1,0 +1,43 @@
+\documentclass[11pt]{exam}
+
+\input{../common.tex}
+\begin{document}
+\customheading{\today}{Problem 19: Trinomial Expansion}{Fall 2024}{CS 30 - Discrete Maths}
+
+\section*{}
+After understanding the binomial expansion done in class, you are ready to figure out the \textit{trinomial
+expansion}. Consider the expansion of the expression $(x+y+z)^n$ as a polynomial on three variables
+with various monomials. For each of these give a line of reasoning.
+\begin{parts}
+    \part Write down the set of monomials you see in set-builder notation?
+        \begin{customsolutionbox}
+            Let $A$ be the set of monomials. Since we have $3$ variables, the monomial will be of the form $x^ay^bz^c$, where $0 \leq a, b, c \leq n$, and $a+b+c = n$. $A's$ set builder notation is as follows:
+            \begin{align*}
+                A &= \{x^ay^bz^c: 0 \leq a, b, c \leq n, \hs  a+b+c = n\}
+            \end{align*}
+        \end{customsolutionbox}
+
+    \part What is the cardinality of the above set of monomials?
+        \begin{customsolutionbox}
+            To find the cardinality of monomials, we can use the stars and bars method. The number of non-negative integer solutions to the equation $a + b + c = n \equiv k$ and $n = 3 \text{ i.e. } (a, b, c)$ is given by:
+            \begin{align*}
+                {n + k - 1 \choose k} &= {3 + n - 1 \choose n} \\
+                &= \frac{(n+2)!}{n!\cdot(3-1)!}  \\
+                &= \frac{(n+2)!}{n!\cdot 2!} \\
+                &= \frac{(n+2) \cdot (n+1) \cdot n!}{n!\cdot 2!} \\
+                &= \frac{(n+2)\cdot(n+1)}{2}
+            \end{align*}
+        \end{customsolutionbox}
+    \part What is the coefficient, in the trinomial expansion, of every monomial?
+        \begin{customsolutionbox}
+            The coefficient of each monomial can be represented by $\binom{n}{k}$ where $k = a,b,c$ and $n = a+b+c$:
+            \begin{align}
+                \text{Num coefficients } &=\binom{n}{a,b,c} \\
+                &= \frac{n!}{a!b!c! \cdot (n - (a+b+c))} \\
+                &= \frac{n!}{a!b!c! \cdot 1} \\
+                &= \frac{n!}{a!b!c!}
+            \end{align}
+            We do so, because the order in which $xyz$ appears doesn't matter.
+        \end{customsolutionbox}
+\end{parts}
+\end{document}

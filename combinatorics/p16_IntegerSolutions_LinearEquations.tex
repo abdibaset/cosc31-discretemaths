@@ -1,0 +1,104 @@
+\documentclass[11pt]{exam}
+
+\input{../common.tex}
+\begin{document}
+\customheading{\today}{Problem 16: Integer Solutions to Linear Equations}{Fall 2024}{CS 30 - Discrete Maths}
+\section*{}
+All the answers below should be a single binomial coefficient. Give short and precise reasons.
+\begin{parts}
+    \part How \textit{non-negative, integer} solutions are there to the equation $a+b+c=100$
+        \begin{customsolutionbox}
+            We can use the stars, and bars technique to solve this ${n+k-1 \choose k} \equiv {n+k-1 \choose n-1}$ problem, where $k = 100$ and $n=3$.
+            \begin{align*}
+                {n + k - 1 \choose k} &= \frac{(n+k-1)!}{k! \cdot (n-1)!} \\
+                &= \frac{(3+100-1)!}{100! \cdot (3-1)!} \\
+                &= \frac{102!}{100! \cdot 2!} \\
+                &= 5151
+            \end{align*}
+        \end{customsolutionbox}
+    \part How many \textit{non-negative, integer} solutions are there to $a + b + c \leq 100$
+        \begin{customsolutionbox}
+            We can use the stars and bars technique to solve this. For this case, the sum maybe less than 100, we can introduce a new bar that partitions the stars into 4, where the $4^{th}$ might have stars, or none. $k = 100$ and $n = 4$
+            \begin{align*}
+                {n+k-1 \choose k}  &= \frac{(n+k-1)!}{k! \cdot (n-1)!} \\
+                &= \frac{(4+100-1)!}{100! \cdot (4-1)!} \\
+                &= \frac{103!}{100! \cdot 3!} \\
+                &= 176851
+            \end{align*}
+        \end{customsolutionbox}
+
+    \part How many \textit{non-negative, integer}  solutions are there to $a + b + c = 100$ where $a, b, c$ are even?
+        \begin{customsolutionbox}
+            $a, b, c$ can be written as $2a', 2b', 2c'$ respectively where $a', b', c'$ are natural numbers. Therefore,
+            \begin{align*}
+                a+b+c &= 100 \\
+                2a' + 2b' + 2c' &= 100 \\
+                a' + b' + c' &= 100
+            \end{align*}
+            Now we can apply the stars and bars technique to get the number of integer solutions. In this case, $k = 50$ and $n = 3$.
+            \begin{align*}
+                {n + k - 1 \choose k} &= \frac{(n+k-1)!}{k!\cdot(n-1)!} \\
+                &=\frac{(3+50-1)!}{50!\cdot(3-1)!} \\
+                &=\frac{52!}{50!\cdot 2!} \\
+                &= 1326
+            \end{align*}
+        \end{customsolutionbox}
+
+    \part How many \textit{non-negative, integer} solutions are there to $a + b + c = 99$ where $a, b, c$ are odd?
+        \begin{customsolutionbox}
+            $a, b, c$ can be written as $2a'+1, 2b'+1, 2c'+1$ respectively where $a', b', c'$ are natural numbers. Therefore,
+            \begin{align*}
+                a+b+c &= 99 \\
+                (2a'+1) + (2b' +1)+ (2c'+1) &= 99\\
+                2a' + 2b' + 2c' &= 96 \\
+                a' + b' + c' &= 48
+            \end{align*}
+            Now we can apply the stars and bars technique to get the number of integer solutions. In this case, $k = 48$ and $n = 3$.
+            \begin{align*}
+                {n + k - 1 \choose k} &= \frac{(n+k-1)!}{k!\cdot(n-1)!} \\
+                &=\frac{(3+48-1)!}{48!\cdot(3-1)!} \\
+                &=\frac{50!}{48!\cdot 2!} \\
+                &= 1225
+            \end{align*}
+        \end{customsolutionbox}
+
+    \part How many non-negative integer solutions are there to $a + b + c = 100$, such that $a \geq 10, b \geq 20,$ and $c \geq 30$
+        \begin{customsolutionbox}
+            Let $a = a' + 10, b = b' + 20,$ and $c = c' + 30$ since we need $a \geq 10, b \geq 20,$ and $c \geq 30$. $a+b+c =100$ can be re-written as:
+            \begin{align*}
+                (a' + 10) + (b' + 20) + (c' + 30) &= 100 \\
+                a' + b' + c' &= 40.
+            \end{align*}
+            Now we can apply the stars and bars technique to get the number of integer solutions. In this case, $k = 70$ and $n = 3$.
+            \begin{align*}
+                {n + k - 1 \choose k} &= \frac{(n+k-1)!}{k!\cdot(n-1)!} \\
+                &=\frac{(3+40-1)!}{40!\cdot(3-1)!} \\
+                &=\frac{42!}{40!\cdot 2!} \\
+                &= 861
+            \end{align*}
+        \end{customsolutionbox}
+    \part How many non-negative integer solutions are there to $a + b + c = 100$, such that $a \geq 10, b \geq 20,$ and $c < 30$
+        \begin{customsolutionbox}
+            Let $a = a' + 10, b = b' + 20$ since we need $a \geq 10, b \geq 20$ hence $a+b+c =100$ can be re-written as:
+            \begin{align}
+                a+b+c &= 100 \Rightarrow (a'+10) + (b' + 20) + c = 100 \\
+                a' + b' + c &= 70
+            \end{align}
+            We can apply stars and bars to get the number of solution without having any restriction on $c$. $n = 3$ and $k = 70$
+            \begin{align*}
+                {n + k - 1 \choose k} &= \frac{(n+k-1)!}{k!\cdot(n-1)!} \\
+                &=\frac{(3+70-1)!}{70!\cdot(3-1)!} \\
+                &=\frac{72!}{70!\cdot 2!} \\
+                &= 2556
+            \end{align*}
+            We have already gotten the number of integer solutions when $n \geq 30$, and shown above is the number of integer solutions when $c$ doesn't have any restriction. The difference between the two gives us the number of integer solutions when $c < 30$ ie.e
+            \begin{align*}
+                \text{num integer solutions }&= {3 + 70 - 1 \choose 70} - {3 + 40 - 1 \choose 40} \\
+                 &=\frac{(3+70-1)!}{70!\cdot(3-1)!} - \frac{(3+40-1)!}{40!\cdot(3-1)!} \\
+                &= 2556-861 \\
+                &= 1695
+            \end{align*}
+
+        \end{customsolutionbox}
+\end{parts}
+\end{document}
